@@ -45,8 +45,8 @@ public class Rock : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(Vector3.right * horizontal * turnSpeed);
-        rb.AddForce(Vector3.forward * vertical * accelerationSpeed);
+        rb.AddForce(Camera.main.transform.right * horizontal * turnSpeed);
+        rb.AddForce(Camera.main.transform.forward * vertical * accelerationSpeed);
     }
 
     IEnumerator ParticlesAnimation()

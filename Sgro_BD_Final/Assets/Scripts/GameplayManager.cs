@@ -28,6 +28,7 @@ public class GameplayManager : MonoBehaviour
 
     public Action<int> OnPlayerGotPoints;
     public Action<int> OnPlayerSavedPoints;
+    public Action<int> OnPlayerRecieveDamage;
     public Action<int> OnPlayerDeath;
     public Action<float> OnTimeUpdate;
 
@@ -74,6 +75,7 @@ public class GameplayManager : MonoBehaviour
     {
         rock.GetComponent<Rock>().StopMovement();
         playerCurrentLifePoints--;
+        OnPlayerRecieveDamage?.Invoke(playerCurrentLifePoints);
         StartCoroutine(RespawnCoroutine());
         if(playerCurrentLifePoints > 0)
         {

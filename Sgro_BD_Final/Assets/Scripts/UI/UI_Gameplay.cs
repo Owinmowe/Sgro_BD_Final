@@ -12,6 +12,7 @@ public class UI_Gameplay : MonoBehaviour
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI unSavedScoreText = null;
     [SerializeField] TextMeshProUGUI savedScoreText = null;
+    [SerializeField] TextMeshProUGUI currentLifeText = null;
     [SerializeField] TextMeshProUGUI currentDeathsText = null;
     [SerializeField] TextMeshProUGUI timeText = null;
 
@@ -22,6 +23,7 @@ public class UI_Gameplay : MonoBehaviour
         gm.OnPlayerSavedPoints += UpdateSavedScoreText;
         gm.OnPlayerDeath += UpdateDeathsText;
         gm.OnTimeUpdate += UpdateTimeText;
+        gm.OnPlayerRecieveDamage += UpdateLifeText;
     }
 
 
@@ -44,6 +46,11 @@ public class UI_Gameplay : MonoBehaviour
     void UpdateTimeText(float time)
     {
         timeText.text = "Time: " + Mathf.RoundToInt(time);
+    }
+
+    void UpdateLifeText(int currentLife)
+    {
+        currentLifeText.text = "Life: " + currentLife;
     }
 
 }
